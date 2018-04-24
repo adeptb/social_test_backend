@@ -6,14 +6,8 @@ const Community = require('./../models/community');
 const validate = require('mongoose-validator');
 
 let UserSchema = mongoose.Schema({
-    email: {type:String, lowercase:true, trim: true, index: true, unique: true, sparse: true,
-            validate:[validate({
-                validator: 'isEmail',
-                message: 'Not a valid email.',
-            }),]
-    },
+    username: {type:String, trim: true, index: true, unique: true, sparse: true},
     password:{type:String},
-
 }, {timestamps: true});
 
 UserSchema.virtual('communities', {
