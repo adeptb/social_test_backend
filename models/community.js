@@ -7,7 +7,7 @@ let CommunitySchema = mongoose.Schema({
 
 CommunitySchema.methods.toWeb = function(){
     let json = this.toJSON();
-    json.id = this._id;//this is for the front end
+    json.id = this._id;
     return json;
 };
 

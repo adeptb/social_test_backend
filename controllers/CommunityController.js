@@ -6,9 +6,9 @@ const create = async function(req, res){
     let user = req.user;
 
     let community_info = req.body;
-    community_info.users = [{user:user._id}];
+    console.log(community_info);
 
-    [err, community] = await to(community.create(community_info));
+    [err, community] = await to(Community.create(community_info));
     if(err) return ReE(res, err, 422);
 
     return ReS(res,{community:community.toWeb()}, 201);
@@ -43,7 +43,7 @@ const update = async function(req, res){
     data = req.body;
     community.set(data);
 
-    [err, community] = await to(community.save());
+    [err, community] = await to(Community.save());
     if(err){
         return ReE(res, err);
     }
