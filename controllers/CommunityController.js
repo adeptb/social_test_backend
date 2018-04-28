@@ -6,7 +6,7 @@ const create = async function(req, res){
     let user = req.user;
 
     let community_info = req.body;
-    console.log(community_info);
+    community_info.owner = user.id;
 
     [err, community] = await to(Community.create(community_info));
     if(err) return ReE(res, err, 422);
